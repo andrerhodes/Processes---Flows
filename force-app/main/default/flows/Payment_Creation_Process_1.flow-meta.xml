@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the Payment Creation Process process using Payment Created criteria.
+Any actions that should take place upon creation only of a payment</description>
+    <formulas>
+        <name>formula_6_myRule_1_A1_4330500917</name>
+        <dataType>String</dataType>
+        <expression>IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.Partnership__c})
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Program_Category__c})),
+TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Program_Category__c}),
+IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.CampaignId} )
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Campaign.Program_Category__c})),
+TEXT({!$Record.npe01__Opportunity__c.Campaign.Program_Category__c} ),
+
+null))</expression>
+    </formulas>
+    <formulas>
+        <name>formula_7_myRule_1_A1_9270730476</name>
+        <dataType>String</dataType>
+        <expression>IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.Partnership__c})
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Program__c})),
+TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Program__c}),
+IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.CampaignId} )
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Campaign.Program__c})),
+TEXT({!$Record.npe01__Opportunity__c.Campaign.Program__c} ),
+
+null))</expression>
+    </formulas>
+    <formulas>
+        <name>formula_8_myRule_1_A1_2392314486</name>
+        <dataType>String</dataType>
+        <expression>IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.Partnership__c})
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Site__c.Region__c} )),
+TEXT({!$Record.npe01__Opportunity__c.Partnership__c.Site__c.Region__c} ),
+IF(
+!ISBLANK({!$Record.npe01__Opportunity__c.CampaignId} )
+&amp;&amp;
+!ISBLANK(TEXT({!$Record.npe01__Opportunity__c.Campaign.Region__c})),
+TEXT({!$Record.npe01__Opportunity__c.Campaign.Region__c} ),
+
+null))</expression>
+    </formulas>
+    <label>Payment Creation Process_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>myRule_1_A1</name>
+        <label>Create 1 Allocation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Amount__c</field>
+            <value>
+                <elementReference>$Record.npe01__Payment_Amount__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Opportunity__c</field>
+            <value>
+                <elementReference>$Record.npe01__Opportunity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Payment__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Program_Category__c</field>
+            <value>
+                <elementReference>formula_6_myRule_1_A1_4330500917</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Program__c</field>
+            <value>
+                <elementReference>formula_7_myRule_1_A1_9270730476</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Region__c</field>
+            <value>
+                <elementReference>formula_8_myRule_1_A1_2392314486</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Allocation__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <object>npe01__OppPayment__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

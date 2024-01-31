@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Define_Picklists_if_Record_Type_is_School_Site_1</destinationFlowDefinition>
+    <destinationFlowVersion>Define_Picklists_if_Record_Type_is_School_Site_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301Ec00000GVgcxIAD</developerName>
+    <masterLabel>Define Picklists if Record Type is School Site_1</masterLabel>
+    <migratedCriteriaLabel>Record Type is School Site</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Define_Picklists_if_Record_Type_is_School_Site-1</processVersion>
+</ProcessFlowMigration>

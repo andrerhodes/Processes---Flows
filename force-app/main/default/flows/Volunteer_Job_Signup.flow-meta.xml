@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Volunteer_Job_Signup_Notification_Email_Alert</name>
+        <label>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Notif</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Notification_Email_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Notification_Email_Alert</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Volunteer_Job_Signup_Thank_You_Email_Alert</name>
+        <label>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Thank</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Thank_You_Email_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Volunteer_Job_Signup_Notification_Email_Alert</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>GW_Volunteers__Volunteer_Hours__c.GW_Volunteers__Volunteer_Job_Signup_Thank_You_Email_Alert</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the: Volunteer Job Signup workflow rule
+Workflow rule description: When a person signs up for a Job from the VolunteersJobListing(FS) page, thank them and notify the volunteer manager.&quot;</description>
+    <label>Volunteer Job Signup</label>
+    <migratedFromWorkflowRuleName>Volunteer Job Signup</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Volunteer_Job_Signup_Thank_You_Email_Alert</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GW_Volunteers__Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web Sign Up</stringValue>
+            </value>
+        </filters>
+        <object>GW_Volunteers__Volunteer_Hours__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>myRule_1</name>
+        <label>Ready for Qualification</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>FALSE_Ready for Qualification</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Development_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualification in Progress</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_Ready for Qualification</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3</name>
+        <label>Ready for Stewardship</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>FALSE_Ready for Stewardship</defaultConnectorLabel>
+        <rules>
+            <name>TRUE_myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Development_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified: Portfolio Engagement</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>TRUE_Ready for Stewardship</label>
+        </rules>
+    </decisions>
+    <description>Migrated from the Contact Process Create/Edit process using multiple criteria.
+A general process to hold actions related to a contact when they are created or edited.</description>
+    <label>Contact Process Create/Edit_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>myRule_1_A1</name>
+        <label>Qualification Process Eng. Plan</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>npsp__Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npsp__Engagement_Plan_Template__c</field>
+            <value>
+                <stringValue>a0s1T00000NSNzkQAH</stringValue>
+            </value>
+        </inputAssignments>
+        <object>npsp__Engagement_Plan__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>myRule_3_A1</name>
+        <label>Stewardship Engagement Plan</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>npsp__Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npsp__Engagement_Plan_Template__c</field>
+            <value>
+                <stringValue>a0s5000000HmnV9AAJ</stringValue>
+            </value>
+        </inputAssignments>
+        <object>npsp__Engagement_Plan__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

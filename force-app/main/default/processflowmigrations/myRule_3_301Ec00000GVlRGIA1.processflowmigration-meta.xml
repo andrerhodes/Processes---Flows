@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Contact_Process_Create_Edit_1</destinationFlowDefinition>
+    <destinationFlowVersion>Contact_Process_Create_Edit_1-1</destinationFlowVersion>
+    <developerName>myRule_3_301Ec00000GVlRGIA1</developerName>
+    <masterLabel>Contact Process Create/Edit_1</masterLabel>
+    <migratedCriteriaLabel>Ready for Stewardship</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>Contact_Process_Create_Edit-1</processVersion>
+</ProcessFlowMigration>

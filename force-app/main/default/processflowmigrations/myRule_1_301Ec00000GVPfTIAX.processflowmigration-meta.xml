@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Stamp_Contact_Record_Type_on_Attendance_1</destinationFlowDefinition>
+    <destinationFlowVersion>Stamp_Contact_Record_Type_on_Attendance_1-1</destinationFlowVersion>
+    <developerName>myRule_1_301Ec00000GVPfTIAX</developerName>
+    <masterLabel>Stamp Contact Record Type on Attendance_1</masterLabel>
+    <migratedCriteriaLabel>Every Time</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Stamp_Contact_Record_Type_on_Attendance-3</processVersion>
+</ProcessFlowMigration>

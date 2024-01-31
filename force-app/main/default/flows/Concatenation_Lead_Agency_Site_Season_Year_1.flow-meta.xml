@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the Concatenation Lead Agency - Site - Season Year process using Field Concatenation criteria.
+Fill up automatically 3 fields</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formula_1_myRule_1_A1_9405892877</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Lead_Agency__c.Account_Acronym__c} &amp;&quot;-&quot;&amp;{!$Record.Account__c.Account_Acronym__c} &amp;&quot;-&quot;&amp;TEXT({!$Record.Season_Year__c})</expression>
+    </formulas>
+    <label>Concatenation Lead Agency - Site - Season Year_1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>Field Concatenation - Fill up automatically</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>formula_1_myRule_1_A1_9405892877</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <object>Partnership__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>
