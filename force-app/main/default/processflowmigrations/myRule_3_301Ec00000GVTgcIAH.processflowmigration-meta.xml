@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Populate_Date_Fields_on_Enrollment_Object_with_Season_Dates_1</destinationFlowDefinition>
+    <destinationFlowVersion>Populate_Date_Fields_on_Enrollment_Object_with_Season_Dates_1-1</destinationFlowVersion>
+    <developerName>myRule_3_301Ec00000GVTgcIAH</developerName>
+    <masterLabel>Populate Date Fields on Enrollment Object with Season Dates_1</masterLabel>
+    <migratedCriteriaLabel>Start Date is Populated and End Date is Blank</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>Populate_Date_Fields_on_Enrollment_Object_with_Season_Dates-1</processVersion>
+</ProcessFlowMigration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>New_Donor_Email_Alert</fullName>
+        <description>New Donor Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>abailey@americascores.org</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Donor_Email_Alert</template>
+    </alerts>
+    <rules>
+        <fullName>New Donor HH Process</fullName>
+        <actions>
+            <name>New_Donor_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Send_Welcome_Letter_to_New_Donor_Household</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <description>When someone in HH donates, take associated steps</description>
+        <failedMigrationToolVersion>246.17.19</failedMigrationToolVersion>
+        <formula>npo02__LastCloseDate__c = npo02__FirstCloseDate__c &amp;&amp;  npo02__NumberOfClosedOpps__c =1 &amp;&amp;  RecordTypeId = &quot;01250000000IU69&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Donor HH Process v2</fullName>
+        <actions>
+            <name>New_Donor_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Send_Welcome_Letter_to_New_Donor_Household</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <description>When someone in HH donates, take associated steps</description>
+        <failedMigrationToolVersion>246.17.19</failedMigrationToolVersion>
+        <formula>npo02__LastCloseDate__c = npo02__FirstCloseDate__c &amp;&amp;  npo02__NumberOfClosedOpps__c =1 &amp;&amp;  RecordTypeId = &quot;01250000000IU69&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Send_Welcome_Letter_to_New_Donor_Household</fullName>
+        <assignedTo>abailey@americascores.org</assignedTo>
+        <assignedToType>user</assignedToType>
+        <description>This household just donated for the first time.  Please send them the Welcome Letter.  MORE INSTRUCTIONS TO FOLLOW BASED ON MAIL MERGE DECISION.</description>
+        <dueDateOffset>5</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Account.npo02__FirstCloseDate__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Send Welcome Letter to New Donor Household</subject>
+    </tasks>
+</Workflow>

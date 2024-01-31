@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the Define Picklists if Record Type is School Site process using Record Type is School Site criteria.
+Organization Type field is set to School &amp; Industry Type field is set to Education &amp; Services Provided is set to Educational Programming</description>
+    <label>Define Picklists if Record Type is School Site_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>myRule_1_A1</name>
+        <label>Picklists Values Defined</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Industry_Type__c</field>
+            <value>
+                <stringValue>Education</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Organization_Type__c</field>
+            <value>
+                <stringValue>School</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Services_Provided__c</field>
+            <value>
+                <stringValue>Educational Programming</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordTypeId}=&quot;01250000000J8SPAA0&quot;</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

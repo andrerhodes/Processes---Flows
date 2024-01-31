@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Create_Grant_Deadline_for_LOIs</destinationFlowDefinition>
+    <destinationFlowVersion>Create_Grant_Deadline_for_LOIs-1</destinationFlowVersion>
+    <developerName>myRule_1_301Ec00000GVbVKIA1</developerName>
+    <masterLabel>Create Grant Deadline for LOIs</masterLabel>
+    <migratedCriteriaLabel>LOI Due Date is set</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Create_Grant_Deadline_for_LOI-2</processVersion>
+</ProcessFlowMigration>
