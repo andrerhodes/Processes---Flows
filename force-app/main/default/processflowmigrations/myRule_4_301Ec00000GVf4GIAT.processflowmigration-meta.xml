@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Concatenate_Team_Season_Name_and_Auto_populate_Scores_Staff</destinationFlowDefinition>
+    <destinationFlowVersion>Concatenate_Team_Season_Name_and_Auto_populate_Scores_Staff-2</destinationFlowVersion>
+    <developerName>myRule_4_301Ec00000GVf4GIAT</developerName>
+    <masterLabel>Concatenate Team Season Name and Auto-populate Scores Staff</masterLabel>
+    <migratedCriteriaLabel>Is New Team Season Record</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_4</migratedCriteriaName>
+    <processVersion>Concatenation_Team_and_Season-3</processVersion>
+</ProcessFlowMigration>

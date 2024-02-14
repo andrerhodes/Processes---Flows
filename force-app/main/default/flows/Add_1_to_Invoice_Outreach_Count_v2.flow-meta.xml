@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the: Add 1 to Invoice Outreach Count v2 workflow rule
+Workflow rule description: &quot;</description>
+    <formulas>
+        <name>Add_1_to_Invoice_Outreach_CountFormula</name>
+        <dataType>Number</dataType>
+        <expression>if(isblank($Record.Invoice_Outreach_Count__c),1,$Record.Invoice_Outreach_Count__c + 1)</expression>
+        <scale>0</scale>
+    </formulas>
+    <label>Add 1 to Invoice Outreach Count v2</label>
+    <migratedFromWorkflowRuleName>Add 1 to Invoice Outreach Count v2</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Invoice_Outreach_Count__c</field>
+            <value>
+                <elementReference>Add_1_to_Invoice_Outreach_CountFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Invoice_Outreach_WF_Trigger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Invoice_Outreach_WF_Trigger__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

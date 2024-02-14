@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Opportunity_Process_create_edit_1</destinationFlowDefinition>
+    <destinationFlowVersion>Opportunity_Process_create_edit_1-1</destinationFlowVersion>
+    <developerName>myRule_3_301Ec00000GVbVLIA1</developerName>
+    <masterLabel>Opportunity Process create/edit_1</masterLabel>
+    <migratedCriteriaLabel>Stage Changes to Pledged/Awarded</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_3</migratedCriteriaName>
+    <processVersion>Opportunity_Process_create_edit-2</processVersion>
+</ProcessFlowMigration>

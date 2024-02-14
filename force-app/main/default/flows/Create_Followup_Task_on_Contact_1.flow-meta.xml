@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Migrated from the Create Followup Task on Contact process using Campaign Member contains &quot;Followup&quot; criteria.
+When Campaign Member Status contains &quot;Followup&quot; create task on that contact assigned to campaign owner</description>
+    <formulas>
+        <name>formula_2_myRule_1_A1_0645328378</name>
+        <dataType>Date</dataType>
+        <expression>today() + 3</expression>
+    </formulas>
+    <formulas>
+        <name>formula_3_myRule_1_A1_9832621886</name>
+        <dataType>String</dataType>
+        <expression>&quot;This contact requested a followup while responding to the &quot; + {!$Record.Campaign.Name} +  &quot; Campaign. You have been assigned because you are the owner of that Campaign.&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>formula_4_myRule_1_A1_2871453654</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Campaign.OwnerId}</expression>
+    </formulas>
+    <formulas>
+        <name>formula_5_myRule_1_A1_1274313143</name>
+        <dataType>DateTime</dataType>
+        <expression>now()+3</expression>
+    </formulas>
+    <label>Create Followup Task on Contact_1</label>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>myRule_1_A1</name>
+        <label>Create a followup task</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_0645328378</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>formula_3_myRule_1_A1_9832621886</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>formula_4_myRule_1_A1_2871453654</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ReminderDateTime</field>
+            <value>
+                <elementReference>formula_5_myRule_1_A1_1274313143</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Contact requested followup</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.CampaignId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>myRule_1_A1</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>CONTAINS(text({!$Record.Status}),&quot;Followup&quot; )</filterFormula>
+        <object>CampaignMember</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
